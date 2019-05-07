@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>process_data module &mdash; B-mode Ultrasound Imaging 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="B-mode Ultrasound Imaging 1.0 documentation" href="index.html" />
+    <link rel="up" title="." href="modules.html" />
+    <link rel="next" title="read_data module" href="read_data.html" />
+    <link rel="prev" title="output_data module" href="output_data.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-process_data">
+<span id="process-data-module"></span><h1>process_data module<a class="headerlink" href="#module-process_data" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="process_data.center_data">
+<code class="descclassname">process_data.</code><code class="descname">center_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#process_data.center_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>given RF data in vector form, recenter the data around average</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>numpy array</em>) &#8211; 1D array of RF raw data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">centered_data: array of recentered rf data (np.array)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="process_data.log_compression">
+<code class="descclassname">process_data.</code><code class="descname">log_compression</code><span class="sig-paren">(</span><em>filtered_data</em><span class="sig-paren">)</span><a class="headerlink" href="#process_data.log_compression" title="Permalink to this definition">¶</a></dt>
+<dd><p>given RF data in vector form, compress the data with log10</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filtered_data</strong> (<em>numpy array</em>) &#8211; 1D array of RF raw data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data_compress: array of compressed rf data (np.array)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="process_data.low_pass_filter">
+<code class="descclassname">process_data.</code><code class="descname">low_pass_filter</code><span class="sig-paren">(</span><em>rectify_data_set</em>, <em>window_size=15</em><span class="sig-paren">)</span><a class="headerlink" href="#process_data.low_pass_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>given RF data in vector form, convolve the data with kernel
+of pre-defined window size to achieve low pass filter effect</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rectify_data_set</strong> (<em>numpy array</em>) &#8211; 1D array of RF raw data</li>
+<li><strong>window_size</strong> (<em>int</em>) &#8211; user input window size, default 15</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">filtered_data: array of filtered rf data (np.array)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="process_data.rectify_data">
+<code class="descclassname">process_data.</code><code class="descname">rectify_data</code><span class="sig-paren">(</span><em>centered_data</em><span class="sig-paren">)</span><a class="headerlink" href="#process_data.rectify_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>given RF data in vector form, rectify the data so there&#8217;s no negative values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>centered_data</strong> (<em>numpy array</em>) &#8211; 1D array of RF raw data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">rectify_data_set: array of rectified rf data (np.array)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="process_data.reshape_process">
+<code class="descclassname">process_data.</code><code class="descname">reshape_process</code><span class="sig-paren">(</span><em>data_compress</em>, <em>axial_samples</em>, <em>num_beams</em><span class="sig-paren">)</span><a class="headerlink" href="#process_data.reshape_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>given RF data in vector form, return reshaped data in 2D matrix form</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_compress</strong> (<em>numpy array</em>) &#8211; 1D array of RF raw data</li>
+<li><strong>axial_samples</strong> (<em>int</em>) &#8211; Number of axial samples - given by JSON file</li>
+<li><strong>num_beams</strong> (<em>int</em>) &#8211; Number of ultrasound beams - given by JSON file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">reshape_data: matrix of reorginized RF data</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">.</a><ul>
+      <li>Previous: <a href="output_data.html" title="previous chapter">output_data module</a></li>
+      <li>Next: <a href="read_data.html" title="next chapter">read_data module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/process_data.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Vera Xu, Ringo Yen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/process_data.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

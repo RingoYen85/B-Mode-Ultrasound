@@ -1,0 +1,6 @@
+numpy>=1.11.1
+pytest-cov>=2.4.0
+read_data
+process_data
+output_data
+argparse
